@@ -66,7 +66,8 @@ echo '<br>';
 
 // Добавление мультисписка
 
-$name = $_POST['multi-name'];
+$name = $_POST['doptext-name'];
+$mean = $_POST['doptext-mean'];
 $type = $_POST['choise'];
 function choise() {
 	$type = $_POST['choise'];
@@ -93,22 +94,14 @@ $data = array (
     0 => 
     array (
       'name' => $name,
-      'type' => '5',
+      'type' => '1',
       'element_type' => $elemType,
       'origin' => $serviceId,
       'enums' => 
       array (
-        0 => md5(uniqid(rand(), true)),
-        1 => md5(uniqid(rand(), true)),
-        2 => md5(uniqid(rand(), true)),
-        3 => md5(uniqid(rand(), true)),
-        4 => md5(uniqid(rand(), true)),
-        5 => md5(uniqid(rand(), true)),
-        6 => md5(uniqid(rand(), true)),
-        7 => md5(uniqid(rand(), true)),
-        8 => md5(uniqid(rand(), true)),
-        9 => md5(uniqid(rand(), true))
+        0 => $mean,
       ),
+      'is_editable' => '1',
     ),
   ),
 );

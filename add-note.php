@@ -66,8 +66,8 @@ echo '<br>';
 
 // Добавление мультисписка
 
-$name = $_POST['multi-name'];
-$type = $_POST['choise'];
+$elemId = $_POST['elem-id'];
+$noteText = $_POST['note-text'];
 function choise() {
 	$type = $_POST['choise'];
 	switch($type) {
@@ -84,35 +84,32 @@ function choise() {
 		return 12;
 	}
 }
+function noteChoise() {
+  $type = $_POST['note-choise'];
+  switch($type) {
+    case 'simple-note':
+    return 4;
+    break;
+    case 'call-note':
+    return 10;
+  }
+}
 $elemType = choise();
-$serviceId = md5(uniqid(rand(), true));
+$noteType = noteChoise();
 
 $data = array (
   'add' => 
   array (
     0 => 
     array (
-      'name' => $name,
-      'type' => '5',
+      'element_id' => $elemId,
       'element_type' => $elemType,
-      'origin' => $serviceId,
-      'enums' => 
-      array (
-        0 => md5(uniqid(rand(), true)),
-        1 => md5(uniqid(rand(), true)),
-        2 => md5(uniqid(rand(), true)),
-        3 => md5(uniqid(rand(), true)),
-        4 => md5(uniqid(rand(), true)),
-        5 => md5(uniqid(rand(), true)),
-        6 => md5(uniqid(rand(), true)),
-        7 => md5(uniqid(rand(), true)),
-        8 => md5(uniqid(rand(), true)),
-        9 => md5(uniqid(rand(), true))
-      ),
+      'text' => $noteText,
+      'note_type' => $noteType,
     ),
   ),
 );
-$link = "https://demomac.amocrm.ru/api/v2/fields";
+$link = "https://demomac.amocrm.ru/api/v2/notes";
 
 $headers[] = "Accept: application/json";
 
