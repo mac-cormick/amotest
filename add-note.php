@@ -64,10 +64,10 @@ if(isset($Response['auth'])) #Флаг авторизации доступен �
 echo '<br>';
 
 
-// Добавление мультисписка
+// Добавление текстового поля
 
-$elemId = $_POST['elem-id'];
-$noteText = $_POST['note-text'];
+$elemId = strip_tags($_POST['elem-id']);
+$noteText = strip_tags($_POST['note-text']);
 function choise() {
 	$type = $_POST['choise'];
 	switch($type) {

@@ -66,7 +66,7 @@ echo '<br>';
 
 // Добавление мультисписка
 
-$name = $_POST['multi-name'];
+$name = strip_tags($_POST['multi-name']);
 $type = $_POST['choise'];
 function choise() {
 	$type = $_POST['choise'];

@@ -65,7 +65,7 @@ echo '<br>';
 
 
 // Добавление n контактов и компаний
-$contCount = $_POST['contacts-count'];
+$contCount = strip_tags($_POST['contacts-count']);
 for ($i=0; $i<$contCount; $i++) {
 	$name = md5(uniqid(rand(), true));
 	$company = md5(uniqid(rand(), true));

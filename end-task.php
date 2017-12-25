@@ -66,8 +66,8 @@ echo '<br>';
 
 // Добавление мультисписка
 
-$taskId = $_POST['task-id'];
-$taskText = $_POST['task-text'];
+$taskId = strip_tags($_POST['task-id']);
+$taskText = strip_tags($_POST['task-text']);
 $updateDate = strtotime($_POST['date']);
 
 $data = array (

@@ -66,8 +66,8 @@ echo '<br>';
 
 // Добавление мультисписка
 
-$name = $_POST['doptext-name'];
-$mean = $_POST['doptext-mean'];
+$name = strip_tags($_POST['doptext-name']);
+$mean = strip_tags($_POST['doptext-mean']);
 $type = $_POST['choise'];
 function choise() {
 	$type = $_POST['choise'];
