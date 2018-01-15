@@ -65,7 +65,29 @@ if(isset($Response['auth'])) #Флаг авторизации доступен �
 }
 echo '<br>';
 
-for ($i=0; $i<75; $i++) {
+// Функция генерации случайной сттроки
+function random_string ($str_length, $str_characters)
+{
+    $str_characters = array (0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
+    if (!is_int($str_length) || $str_length < 0)
+    {
+        return false;
+    }
+    // Подсчитываем реальное количество символов, участвующих в формировании случайной строки и вычитаем 1
+    $characters_length = count($str_characters) - 1;
+    // Объявляем переменную для хранения итогового результата
+    $string = '';
+    // Формируем случайную строку в цикле
+    for ($i = $str_length; $i > 0; $i--)
+    {
+        $string .= $str_characters[mt_rand(0, $characters_length)];
+    }
+    // Возвращаем результат
+    return $string;
+}
+
+// Получение сделок
+for ($i=0; $i<173; $i++) {
 	sleep(1);
 	$leads = array();
 	$offset = $i*500;
@@ -97,11 +119,12 @@ for ($i=0; $i<75; $i++) {
 	// echo '</pre>';
 	// echo '<br><br>';
 
+// Формирование массива данных для добавления note для каждой сделки
 	$array = [];
 
 	foreach($leads as $item) {
 		$elemId = $item['id'];
-		$text = md5(uniqid(rand(), true));
+		$text = random_string(1000, $str_characters);
 		$noteType = rand(4, 5);
 		$array[] = array('element_id' => $elemId, 'element_type' => '2', 'text' => $text, 'note_type' => $noteType);
 	}
@@ -115,6 +138,7 @@ for ($i=0; $i<75; $i++) {
 		'add' => $array
 	);
 
+// Добавление notes
 	$link = "https://newdemonew.amocrm.ru/api/v2/notes";
 
 	$headers[] = "Accept: application/json";
