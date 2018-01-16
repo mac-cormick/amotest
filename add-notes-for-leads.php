@@ -68,7 +68,7 @@ echo '<br>';
 // Функция генерации случайной сттроки
 function random_string ($str_length, $str_characters)
 {
-    $str_characters = array (0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
+    $str_characters = array (0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',',','.','(',')','!','?',' ');
     if (!is_int($str_length) || $str_length < 0)
     {
         return false;
@@ -124,7 +124,7 @@ for ($i=0; $i<173; $i++) {
 
 	foreach($leads as $item) {
 		$elemId = $item['id'];
-		$text = random_string(1000, $str_characters);
+		$text = random_string(10000, $str_characters);
 		$noteType = rand(4, 5);
 		$array[] = array('element_id' => $elemId, 'element_type' => '2', 'text' => $text, 'note_type' => $noteType);
 	}
